@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>ALGORITHME CARRAFE</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'css/w3.css') }}">
+        <style>
+            
+        </style>
+    </head>
+    <body style="height: calc(100% - 0px);">
+        <div style="display: flex; align-items:center; height: 100vh;">
+        <div class="w3-card-4" style="width: 500px; margin:auto; justify-self: center;">
+        <form action = "calculate" method = "GET" class="w3-container">
+            Carrafe 1: <input class="w3-input w3-border" type = "number" placeholder="litre" name = "bucket1" required minlength="1" /><br>
+            Carrafe 2: <input class="w3-input w3-border" type = "number" placeholder="litre" name = "bucket2" required minlength="1" /><br><br>
+            Valeur voulu: <input type = "number" name = "desiredamount" placeholder="litre" required minlength="1" /><br>
+            <br>
+            <div style="display: flex; justify-content: center;">
+                <input class="w3-btn w3-blue" type = "submit" name = "submit" value = "Submit" />
+            </div>
+        </form>
+        </div>
+        </div>
+    </body>
+</html>

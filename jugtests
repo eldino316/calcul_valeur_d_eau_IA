@@ -1,0 +1,43 @@
+#!/bin/bash
+# Tests for Water Jug application
+# By David Braverman
+
+function jugtest {
+    b1=$1
+    b2=$2
+    da=$3
+    resp=$4
+    URI=$(echo "http://localhost:5847/calculate?bucket1=${b1}&bucket2=${b2}&desiredamount=${da}&Submit=submit")
+    PASS=$(curl -sS -X GET "$URI" 2>/dev/null |grep "$resp" |wc -l)
+    if [[ $PASS == 1 ]]; then
+        printf ": Test Passed\n"
+    else
+	printf ": Test Failed (${PASS})\n"
+    fi 
+}
+
+printf "Bucket capacity less than goal"
+jugtest 2 3 10 "You need bigger buckets to achieve desired amount."
+printf "Bucket 2 is 0"
+jugtest 5 0 4 "Bucket 2 must be greater than 0"
+printf "Bucket 1 is 0"
+jugtest 0 5 3 "Bucket 1 must be greater than 0"
+printf "Desired Amount is less than 0"
+jugtest 5 3 -4 "Desired amount must be greater than 0"
+printf "Happy path, small to big"
+jugtest 3 5 4 "Solution (8 steps)"
+printf "Alpha Entry 1"
+jugtest cat 5 4 "Only numeric values are permitted."
+printf "Alpha Entry 2"
+jugtest 5 bat 4 "Only numeric values are permitted."
+printf "Alpha Entry 3"
+jugtest 5 3 dog "Only numeric values are permitted."
+printf "Happy path, small to big 2"
+jugtest 5 3 4 'Transfer 3 gallon bucket content to 5 gallon bucket</td><td style="text-align:center">0</td><td style="text-align:center">1</td>'
+printf "Goal is bucket 1 + bucket 2"
+jugtest 9 4 13 "Solution (3 steps)"
+printf "GCD check fail, no way to reach goal"
+jugtest 6 3 2 "No way to achieve desired amount with specified buckets"
+printf "Happy path, big to small"
+jugtest 5 3 2 "Solution (4 steps)"
+

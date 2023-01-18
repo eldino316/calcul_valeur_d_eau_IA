@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>ALGORITHME DETAILLÉ"</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename= 'css/w3.css') }}">
+    </head>
+    <body style="height: calc(100% - 0px);">
+        <h3><i>J'ai utilisé {{ b1name }} et un {{ b2name }}, avec la capacité {{ goal }} litre(s) d'eau.</i></h3>
+
+        <h2>Solution ({{ rows|length }} étapes):</h2>
+        </hr>
+        <div style="display: flex; align-items:center; height: 100vh;">
+            <div class="w3-card-4" style="width: 500px; margin:auto; justify-self: center;">
+        <table cellpadding="10">
+            <tr>
+                <th>Liste de chémins</th>
+                <th>{{ b1name }}</br>Contents</th> 
+                <th>{{ b2name }}</br>Contents</th>
+            </tr>
+            {% for row in rows %}
+                <tr><td style="text-align:left">{{ row[0] }}</td><td style="text-align:center">{{ row[1][0] }}</td><td style="text-align:center">{{ row[1][1] }}</td></tr>
+            {% endfor %}
+       </table>
+       <div style="display: flex; justify-content: center;">
+        <a class="w3-btn w3-blue" href="/">réinitialiser le calcul</a></br>
+        </div>
+        <footer>
+        <p>Contact: Rafanomezantsoa Eldino loris</p>
+        <p>Numéro : +261 34 62 680 16 </p>
+        </footer>
+        
+            </div>
+        </div>
+    </body>
+</html>
